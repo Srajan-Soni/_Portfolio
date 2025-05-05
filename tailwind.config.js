@@ -4,6 +4,7 @@ export default {
     "./node_modules/@nextui-org/theme/dist/components/button.js",
 
 ],
+darkMode : 'class', 
     
     theme: {
         extend: {},

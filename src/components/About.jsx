@@ -1,212 +1,157 @@
-import { Accordion,AccordionItem ,Image,Card,CardFooter,Button} from "@nextui-org/react";
-import React,{useState} from "react";
-import gfg from '../assets/gfg.jpg'
-import leetcode from '../assets/leetcode.webp'
+import { Accordion, AccordionItem, Image, Card, CardFooter, Button } from "@nextui-org/react";
+import React from "react";
+import gfg from '../assets/gfg.jpg';
+import leetcode from '../assets/leetcode.webp';
+import { useTheme } from "../context/ThemeContext";
 
 function About() {
+  const { darkMode } = useTheme();
 
+  const aboutInfo = {
+    intro: "Hello, I'm Srajan, a passionate Web developer with a keen eye for MERN Stack. With a background in IT, I strive to create impactful and visually stunning Software solutions that leave a lasting impression.",
+    mission: "My mission is to leverage my skills and creativity to deliver innovative UI solutions that exceed client expectations and contribute positively to the digital landscape. I am committed to continuous learning and growth, always seeking new challenges and opportunities to expand my horizons.",
+    education: {
+      degree: "B.Tech",
+      institute: "Gyan Ganga College of Technology",
+      course: "Computer Science",
+      yearOfPassing: "2022",
+    },
+    skills: [
+      "Javascript",
+      "React",
+      "Node.js",
+      "Python",
+      "SQL",
+      "Web tools & Technology",
+    ],
+  };
+
+  const professionalExperience = [
+    {
+      company: "Persistent Systems",
+      title: "Software Engineer",
+      joinedAt: "July 2022",
+      location: "Pune (on-site)",
+      projects: ["IOS Homescreen", "Redaction Framework"],
+      responsibilities: ["Building UI features", "Manage Tasks", "Handling Client's call", "Team Work"],
+    },
+    {
+      company: "VKV Technologies",
+      title: "Software Engineer",
+      joinedAt: "June 2024",
+      location: "Varanasi (Remote)",
+      projects: ["Cee Vee diag"],
+      responsibilities: [
+        "Working on MERN stack",
+        "User and admin UI development using React and CSS frameworks",
+        "Complex queries for collections",
+        "Working on both frontend and backend",
+      ],
+    },
+  ];
 
   const codingProfiles = [
     {
-      name: 'GFG',
+      name: "GeeksForGeeks",
       img: gfg,
-      link: '',
-      score: 100
+      link: "https://www.geeksforgeeks.org/user/srajansoni/",
     },
     {
-      name: 'Leetcode',
+      name: "Leetcode",
       img: leetcode,
-      link: '',
-      score: 100
+      link: "https://leetcode.com/",
     },
-
-  ]
+  ];
 
   return (
-    <div
-      name="About"
-      className="max-w-screen-2xl container mx-auto px-4 md:px-20 my-20"
-    >
-      <div>
-        <h1 className="text-3xl font-bold mb-5">About</h1>
-        <p>
-          Hello, I'm Srajan, a passionate Web developer with a keen eye for MERN
-          Stack . With a background in IT, I strive to create impactful and
-          visually stunning Software solutions that leave a lasting impression.
-        </p>
-        <br />
-        <h1 className="text-blue-600 font-semibold text-xl">
-          Mission Statement
-        </h1>
-        <p>
-          My mission is to leverage my skills and creativity to deliver
-          innovative UI solutions that exceed client expectations and
-          contribute positively to the digital landscape. I am committed to
-          continuous learning and growth, always seeking new challenges and
-          opportunities to expand my horizons.
-        </p>
-      <br></br>
-        <h1 className="text-blue-600 font-semibold text-xl">
-          Education & Training
-        </h1>
-        <br />
-        <span>
-          <ul>
-            <h5 className="font-semibold text-xl">Degree</h5>
-            <li className="text-grey-800 font-semibold text-m">B.Tech</li>
-            <h5 className="font-semibold text-xl">Institute</h5>
-            <li className="text-grey-800 font-semibold text-m">Gyan Ganga college of Technology</li>
-            <h5 className="font-semibold text-xl">Course</h5>
-            <li className="text-grey-800 font-semibold text-m">Computer Science</li>
-            <h5 className="font-semibold text-xl">Year of Passing</h5>
-            <li className="text-grey-800 font-semibold text-m">2022</li>
+    <div name="About" className={`container mx-auto px-4 md:px-20  ${darkMode ? 'text-white bg-gray-900' : 'text-gray-900 bg-white'}`}>
+      <div className="space-y-6 pt-10">
+        <h1 className="text-3xl font-bold">About</h1>
+        <p className="text-gray-700 dark:text-gray-300">{aboutInfo.intro}</p>
 
+        <div className="space-y-2">
+          <h1 className="text-blue-600 dark:text-yellow-400 font-semibold text-xl">Mission Statement</h1>
+          <p className="text-gray-700 dark:text-gray-300">{aboutInfo.mission}</p>
+        </div>
+
+        <div className="space-y-2">
+          <h1 className="text-blue-600 dark:text-yellow-400 font-semibold text-xl">Education & Training</h1>
+          <ul className="space-y-1 pl-4">
+            <li><span className="font-semibold">Degree:</span> {aboutInfo.education.degree}</li>
+            <li><span className="font-semibold">Institute:</span> {aboutInfo.education.institute}</li>
+            <li><span className="font-semibold">Course:</span> {aboutInfo.education.course}</li>
+            <li><span className="font-semibold">Year of Passing:</span> {aboutInfo.education.yearOfPassing}</li>
           </ul>
-         
-        </span>
-        <br />
-        <br />
-        <h1 className="text-blue-600 font-semibold text-xl">
-          Skills & Expertise
-        </h1>
-        <br />
-        <span>
-          Experienced with <span className="font-semibold text-m">
-            Javascript , React , Node.js , Python , SQL , Web tools & Technology</span> Strong grasp of UI development,
-          Excellent problem-solving skills Effective communicator and
-          collaborator
-        </span>
-        <br />
-        <br />
-        <h1 className="text-blue-600 font-semibold text-xl">
-          Professional Experience
-        </h1>
-        <br />
-        <Accordion>
-      <AccordionItem key="1" aria-label="Accordion 1" subtitle="Software Engineer" title="Persistent Systems">
-      <span>
-          <ul>
-          <h5 className="font-semibold text-xl">Job Title</h5>
-          <li className="text-grey-800 font-semibold text-m">Software Engineer</li>
-          <br />
-          <h5 className="font-semibold text-xl">Company/Organization</h5>
-          <li className="text-grey-800 font-semibold text-m">Persistent Systems</li>
-          <br />
-          <h5 className="font-semibold text-xl">Joined at </h5>
-          <li className="text-grey-800 font-semibold text-m">July 2022 </li>
-          <br />
-          <h5 className="font-semibold text-xl">Location </h5>
-          <li className="text-grey-800 font-semibold text-m">Pune (on-site) </li>
-          <br />
-          <h5 className="font-semibold text-xl">Projects </h5>
-          <li className="text-grey-800 font-semibold text-m">IOS Homescreen </li>
-          <li className="text-grey-800 font-semibold text-m">Redaction Framework </li>
-          <br />
-          <h5 className="font-semibold text-xl">Roles & Responsibilities </h5>
-          <li className="text-grey-800 font-semibold text-m">Building UI features </li>
-          <li className="text-grey-800 font-semibold text-m">Manage Tasks </li>
-          <li className="text-grey-800 font-semibold text-m">Handling CLient's call </li>
-          <li className="text-grey-800 font-semibold text-m">Team Work </li>
+        </div>
 
-          </ul>
-          
-        </span>
-      </AccordionItem>
-      <AccordionItem
-        key="2"
-        aria-label="Accordion 2"
-        subtitle="Software Engineer"
-        title="VKV Technologies"
-      >
-        
-        <span>
-          <ul>
-          <h5 className="font-semibold text-xl">Job Title</h5>
-          <li className="text-grey-800 font-semibold text-m">Software Engineer</li>
-          <br />
-          <h5 className="font-semibold text-xl">Company/Organization</h5>
-          <li className="text-grey-800 font-semibold text-m">VKV Technologies</li>
-          <br />
-          <h5 className="font-semibold text-xl">Joined at </h5>
-          <li className="text-grey-800 font-semibold text-m">June 2024 </li>
+        <div className="space-y-2">
+          <h1 className="text-blue-600 dark:text-yellow-400 font-semibold text-xl">Skills & Expertise</h1>
+          <p className="text-gray-700 dark:text-gray-300">
+            Experienced with <span className="font-semibold">{aboutInfo.skills.join(", ")}</span>.
+            Strong grasp of UI development, excellent problem-solving skills, effective communicator and collaborator.
+          </p>
+        </div>
 
-          <br />
-          <h5 className="font-semibold text-xl">Location </h5>
-          <li className="text-grey-800 font-semibold text-m">Varanasi (Remote) </li>
-          <br />
-          <h5 className="font-semibold text-xl">Projects </h5>
-          <li className="text-grey-800 font-semibold text-m">Cee Vee diag </li>
-      
-          <br />
-          <h5 className="font-semibold text-xl">Roles & Responsibilities </h5>
-          <li className="text-grey-800 font-semibold text-m">Working on MERN stack </li>
-          <li className="text-grey-800 font-semibold text-m">User and admin UI development using React and CSS frameworks </li>
-          <li className="text-grey-800 font-semibold text-m">Complex queries for collections </li>
-          <li className="text-grey-800 font-semibold text-m">working on both frontend and backend </li>
+        <div className="space-y-2">
+          <h1 className="text-blue-600 dark:text-yellow-400 font-semibold text-xl">Professional Experience</h1>
+          <Accordion>
+            {professionalExperience.map((exp, index) => (
+              <AccordionItem
+                key={index}
+                aria-label={`Accordion ${index + 1}`}
+                subtitle={exp.title}
+                title={exp.company}
+                className={`${darkMode ? 'bg-gray-800 text-white' : 'bg-white text-gray-800'} px-2`}
+              >
+                <div className="space-y-2 text-sm">
+                  <p><span className="font-semibold">Job Title:</span> {exp.title}</p>
+                  <p><span className="font-semibold">Joined at:</span> {exp.joinedAt}</p>
+                  <p><span className="font-semibold">Location:</span> {exp.location}</p>
+                  <p className="font-semibold">Projects:</p>
+                  <ul className="list-disc pl-6 space-y-1">
+                    {exp.projects.map((proj, projIndex) => (
+                      <li key={projIndex}>{proj}</li>
+                    ))}
+                  </ul>
+                  <p className="font-semibold">Roles & Responsibilities:</p>
+                  <ul className="list-disc pl-6 space-y-1">
+                    {exp.responsibilities.map((resp, respIndex) => (
+                      <li key={respIndex}>{resp}</li>
+                    ))}
+                  </ul>
+                </div>
+              </AccordionItem>
+            ))}
+          </Accordion>
+        </div>
 
-          </ul>
-          
-        </span>
-      </AccordionItem>
-      {/* <AccordionItem key="3" aria-label="Accordion 3" subtitle="Press to expand" title="Accordion 3">
-        {defaultContent}
-      </AccordionItem> */}
-    </Accordion>
-        
-        <br />
-        <br />
-       
-        <br />
-        <br />
-       
-        <h1 className="text-blue-600 font-semibold text-xl">
-          Coding Profiles
-        </h1>
-
-    <div className="flex items-center justify-around mt-10">
-     
-     
-      <Card
-      isFooterBlurred
-      radius="lg"
-      className="border-none"
-    >
-      <Image
-        alt="GeeksForGeeks"
-        className="object-cover"
-        height={200}
-        src={gfg}
-        width={200}
-      />
-      <CardFooter className=" before:bg-white/10 border-white/20 border-1 overflow-hidden py-1 absolute before:rounded-xl rounded-large bottom-1 w-100 shadow-small ml-1 z-10">
-        {/* <p className="text-tiny text-black">Available soon.</p> */}
-        <Button className="text-tiny m-auto text-center text-white/80 bg-black/20" variant="flat" color="default" radius="lg" size="sm">
-          Visit
-        </Button>
-      </CardFooter>
-    </Card>
-
-    <Card
-      isFooterBlurred
-      radius="lg"
-      className="border-none"
-    >
-      <Image
-        alt="GeeksForGeeks"
-        className="object-cover"
-        height={200}
-        src={leetcode}
-        width={200}
-      />
-      <CardFooter className=" before:bg-white/10 border-white/20 border-1 overflow-hidden py-1 absolute before:rounded-xl rounded-large bottom-1 w-100 shadow-small ml-1 z-10">
-        {/* <h4 className="text-tiny text-black">Score</h4> */}
-        <Button className="text-tiny m-auto text-center text-white/80 bg-black/20" variant="flat" color="default" radius="lg" size="sm">
-          <a href="https://www.geeksforgeeks.org/user/srajansoni/">Visit</a>
-        </Button>
-      </CardFooter>
-    </Card>
-    
- </div>    
+        <div className="space-y-4">
+          <h1 className="text-blue-600 dark:text-yellow-400 font-semibold text-xl">Coding Profiles</h1>
+          <div className="flex flex-wrap justify-center gap-6">
+            {codingProfiles.map((profile, index) => (
+              <Card key={index} isFooterBlurred radius="lg" className={`border-none w-48 md:w-60 ${darkMode ? 'bg-gray-800' : 'bg-white'}`}>
+                <Image
+                  alt={profile.name}
+                  className="object-cover rounded-t-lg"
+                  height={200}
+                  src={profile.img}
+                  width={240}
+                />
+                <CardFooter className="before:bg-white/10 border-white/20 border-1 overflow-hidden py-1 absolute before:rounded-xl rounded-large bottom-1 w-full shadow-small z-10">
+                  <Button
+                    className={`text-tiny m-auto text-center ${darkMode ? 'text-white/80 bg-black/30' : 'text-gray-700 bg-black/20'}`}
+                    variant="flat"
+                    color="default"
+                    radius="lg"
+                    size="sm"
+                  >
+                    <a href={profile.link} target="_blank" rel="noopener noreferrer">Visit</a>
+                  </Button>
+                </CardFooter>
+              </Card>
+            ))}
+          </div>
+        </div>
       </div>
     </div>
   );

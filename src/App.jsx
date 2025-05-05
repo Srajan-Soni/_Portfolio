@@ -8,12 +8,14 @@ import Footer from "./components/Footer";
 import Contact from "./components/Contact";
 import { Toaster } from "react-hot-toast";
 import { NextUIProvider } from "@nextui-org/react";
+import { ThemeProvider } from "./context/ThemeContext";
 
 function App() {
   return (
     <>
       <div>
-      <NextUIProvider>
+        <ThemeProvider>
+        <NextUIProvider>
         <Navbar />
         <Home />
         <About />
@@ -22,6 +24,8 @@ function App() {
         <Contact />
         <Footer />
         </NextUIProvider>
+        </ThemeProvider>
+     
       </div>
       <Toaster />
       
